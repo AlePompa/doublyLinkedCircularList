@@ -81,10 +81,8 @@ public class doppiaCatenaCircolare<T> {
 			size -= 2;
 			return true;
 		}
-		if (ricerca.get(0).equals(head)) {
-			head.getPrec().setSucc(head.getSucc());
-			head.getSucc().setPrec(head.getPrec());
-			head = head.getSucc();
+		if (ricerca.get(0).equals(head) && size==1) {
+			head = null;
 			size--;
 			return true;
 		}
@@ -147,6 +145,8 @@ public class doppiaCatenaCircolare<T> {
 	}
 
 	public ArrayList<Nodo<T>> searchByKey(int key) {
+                if (isEmpty())
+                        return new ArrayList()<>;
 		ArrayList<Nodo<T>> nodi = new ArrayList<>();
 		if (head.getChiave() == key) {
 			nodi.add(head);
